@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CSV Processor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>CSV Processor</h1>
+    <div class="file-input">
+      <label for="csvUpload">Select CSV Files:</label>
+      <input type="file" id="csvUpload" accept=".csv" multiple>
+    </div>
+    <button id="processBtn">Generate Excel Report</button>
+    <div id="status"></div>
+  </div>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
