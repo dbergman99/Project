@@ -116,7 +116,11 @@ async function readAndProcessFile(file, type) {
 function processDispatch(rows) {
   if (!rows.length) return [];
   const header = rows[0];
-  const data = rows.slice(1).sort((a, b) => (a[1] || '').localeCompare(b[1] || ''));
+  //const data = rows.slice(1).sort((a, b) => (a[1] || '').localeCompare(b[1] || ''));
+  var data = rows.slice(1).sort((a, b) => String(a[1] ?? "").localeCompare(String(b[1] ?? "")));
+  //const data = rows.slice(1).sort((a, b) => String((a[1] || '').localeCompare((b[1] || ''))));
+  var proccessData = data.sort((a, b) => String(a[3] ?? '').localeCompare(String(b[3] ?? '')));
+  proccessData = data.sort((a, b) => String(a[0] ?? '').localeCompare(String(b[0] ?? '')));
   return [header, ...data];
 }
 
@@ -155,7 +159,7 @@ function processSample(rows) {
       if (i !== 4) newRow.push(row[i] || '');
     }
     return newRow;
-  }).sort((a, b) => (a[0] || '').localeCompare(b[0] || ''));
+  }).sort((a, b) => (String(a[0] ?? '')).localeCompare(String(b[0] ?? '')));
   
   return [['E', ...header.filter((_, i) => i !== 4)], ...processedData];
 }
